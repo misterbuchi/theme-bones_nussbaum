@@ -1,6 +1,12 @@
 {
-    "name": "squibbleFish/bones",
-    "description": "Fork of the Bones WP Theme",
-    "version": "0.0.1",
+    "name": "squibblefish/bones-theme",
+    "description": "Bare theme for Wordpress",
+    "type": "wordpress-theme",
+    "authors": [
+        {
+            "name": "sfisherGizmo",
+            "email": "stephen@squibble-fish.com"
+        }
+    ],
     "require": {}
 }
