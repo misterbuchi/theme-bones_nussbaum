@@ -118,7 +118,8 @@ a:hover {
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+	margin: 0.67em 0 0.3em;
+}
 
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
@@ -157,7 +158,10 @@ p {
   -webkit-hyphens: auto;
   -epub-hyphens: auto;
   -moz-hyphens: auto;
-  hyphens: auto; }
+  -ms-hyphens: auto;
+  hyphens: auto; 
+  }
+  
 
 /*
  * Addresses margins set differently in IE6/7.
@@ -247,7 +251,13 @@ nav ul,
 nav ol {
   list-style: none;
   list-style-image: none; }
-
+  
+  nav#site-navigation {
+  	position: -webkit-sticky;
+  	top: 0px;
+  }
+  
+  
 /* ==========================================================================
   Embedded content
 ========================================================================== */
@@ -256,6 +266,20 @@ nav ol {
  */
 img {
   border: 0; }
+
+iframe {
+	width: 100%;
+	height: 360Px;
+}
+
+
+.event_item{
+	padding-bottom: 1.5em;
+	border-bottom: 0.2em;
+	border-bottom-color: #80856b;
+	border-bottom-style: solid;
+}
+
 
 /**
  * Correct overflow displayed oddly in IE 9.
@@ -510,12 +534,10 @@ some nice typographical defaults
 more here: http://www.newnet-soft.com/blog/csstypography
 */
 p {
-  -ms-word-break: break-all;
-  -ms-word-wrap: break-all;
-  word-break: break-word;
-  word-break: break-word;
+
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
   -webkit-hyphenate-before: 2;
   -webkit-hyphenate-after: 3;
@@ -678,7 +700,78 @@ them however you see fit.
   .m-3of4 {
     float: left;
     padding-right: 0.75em;
-    width: 75%; } }
+    width: 75%; } 
+    
+  .m-h0{
+    	margin: 0;
+    	width: 0;
+    	height: 0;
+    	display: none;
+    }
+    
+    ul.slideshow li span{
+    	font-size: 1.5em !important;
+    	aria-hidden: true;
+    }
+    
+  div#sidebar1{
+  	padding-top: 0 !important;
+  	padding-right: 1.2em !important;
+  	padding-left: 1.2em !important;
+  	padding-bottom: 1.2em;
+  }
+  
+
+    
+    #toggle{
+display: none;
+	}
+.nav-trigger[type=checkbox]:checked{
+	display: none;
+}
+
+
+
+.nav-trigger[type=checkbox]:not(:checked), .nav-trigger[type=checkbox] {
+	display: none;
+}
+    
+    .nav-trigger[type=checkbox]:checked + div + #toggle{
+display: block; }
+
+body { -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from { padding: 0; } to { padding: 0; } }
+    
+    
+  
+    
+ 
+    #logo{
+    	margin: 0 0  auto;
+    	width: 30%; 
+    	margin-bottom: -2em !important;   }
+    
+    .gallery-columns-2 dl.gallery-item{
+    	width: 50% !important;
+    } 
+    
+    .gallery-columns-3 dl.gallery-item{
+    	width: 33% !important;
+    }  
+    
+    .gallery-columns-4 dl.gallery-item{
+    	width: 50% !important;
+    } 
+    
+    .gallery-columns-5 dl.gallery-item{
+    	width: 100% !important;
+    }
+    
+    .gallery-columns-6 dl.gallery-item{
+    	width: 33% !important;
+    } 
+    
+    }
 /* Portrait tablet to landscape */
 @media (min-width: 768px) and (max-width: 1029px) {
   .t-all {
@@ -730,7 +823,39 @@ them however you see fit.
   .t-4of5 {
     float: left;
     padding-right: 0.75em;
-    width: 80%; } }
+    width: 80%; } 
+    
+  .t-h0{
+  	margin: 0;
+  	width: 0;
+  	height: 0;
+  	display: none;
+  }
+  
+  div#sidebar1{
+  	padding-top: 0 !important;
+  	padding-right: 1.2em !important;
+  	padding-left: 1.2em !important;
+  	padding-bottom: 1.2em;
+  }
+  
+  
+  .site-logo{
+  	margin-top: 50px;
+  }
+  
+  #blogdescirption{
+  	margin-top: 55px !important;
+  }
+  
+  
+  #blogdescirption svg {
+  	height: 460px;
+  }
+  
+    }
+    
+   
 /* Landscape to small desktop */
 @media (min-width: 1030px) {
   .d-all {
@@ -842,7 +967,19 @@ them however you see fit.
   .d-1of12 {
     float: left;
     padding-right: 0.75em;
-    width: 8.33%; } }
+    width: 8.33%; } 
+  .d-h0{
+   	margin: 0;
+   	width: 0;
+   	height: 0;
+   	display: none;
+   } 
+   
+   #blogdescirption svg {
+   	height: 970px;
+   }
+    
+    }
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -987,10 +1124,9 @@ textarea,
   vertical-align: middle;
   box-shadow: none;
   border: 0;
-  width: 100%;
   max-width: 400px;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #eaedf2;
+  background-color: #fafafa;
   -webkit-transition: background-color 0.24s ease-in-out;
   transition: background-color 0.24s ease-in-out; }
   input[type="text"]:focus, input[type="text"]:active,
@@ -1247,10 +1383,10 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 body {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
-  color: #5c6b80;
+  color: #444;
   background-color: #eaedf2;
   -webkit-font-smoothing: antialiased; }
 
@@ -1304,19 +1440,19 @@ LAYOUT & GRID STYLES
 LINK STYLES
 *********************/
 a, a:visited {
-  color: #f01d4f;
+  color: #80856b;
   /* on hover */
   /* on click */
   /* mobile tap color */ }
   a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #d10e3c; }
+    color: #999; }
   a:link, a:visited:link {
     /*
     this highlights links on iPhones/iPads.
     so it basically works like the :hover selector
     for mobile devices.
     */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+    -webkit-tap-highlight-color: #80856b; }
 
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
@@ -1350,20 +1486,132 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 0.846em;
-  line-height: 2.09em;
-  text-transform: uppercase;
-  letter-spacing: 2px; }
+  letter-spacing: 2px;
+  font-weight: 500;
+	margin-bottom: 0.5em;
+}
 
 /*********************
 HEADER STYLES
 *********************/
 .header {
-  background-color: #323944; }
+  background-color: #fefffe;
+	color: #2b2e2b;
+	margin-bottom: 0.75em;
+}
 
 #logo {
-  margin: 0.75em 0; }
+	margin-bottom: 0.75em;
+}
+   
+ .site-logo{
+ width: 100%;
+ 	max-width: 256px;
+ 	height: 100%;
+ }  
   #logo a {
     color: white; }
+    
+img.sitelogo{
+
+}
+    
+
+
+#blogdescirption{
+/*width: 256px;*/
+margin-top: 40px;
+
+}
+
+svg{
+	width: 100%;
+	height: auto;
+}
+
+
+
+
+
+
+
+/*********************
+sliedshow STYLES
+*********************/
+/*
+slideshow styles
+*/
+
+.slideshow-window{
+	background-color: #fafafa !important;
+	border-color: #fafafa !important;
+	aria-hidden: true;
+	
+	}
+	
+
+
+ul.slideshow {
+	border: 0px solid #999;
+	padding: 0px 0px 41%;
+	margin-bottom: 0 !important;
+	max-width: 731px !important;
+	overflow: hidden;
+	position: relative;
+	aria-hidden: true;
+	
+	
+}
+
+ul.slideshow li {
+	position: absolute;
+	top: 0; 
+	left: 5;
+	list-style: none;
+	width: 100%;
+	aria-hidden: true;
+	
+}
+
+ul.slideshow li img {
+	width: 100%;
+	height: 100%;
+	aria-hidden: true;
+	
+}
+
+ul.slideshow li span{
+	position: absolute;
+	color: #ffffff;
+	font-weight: bold;
+	text-shadow: 0 0 3px #4c4c4c;
+	font-size: 2em;
+	aria-hidden: true;
+	
+}
+
+
+ul.slideshow li span.wir{
+	text-align: left;
+	top: 20px;
+	left: 20px;
+	aria-hidden: true;
+	
+}
+
+ul.slideshow li span.was{
+
+	text-align: right;
+	color: #ffffff;
+	font-weight: bold;
+	text-shadow: 0 0 3px #4c4c4c;
+	bottom: 20px;
+	right: 20px;
+	aria-hidden: true;
+	
+}
+
+
 
 /*********************
 NAVIGATION STYLES
@@ -1377,10 +1625,12 @@ and more scalable.
 */
 .nav {
   border-bottom: 0;
-  margin: 0;
+  margin: 0;  
   /* end .menu li */
   /* highlight current page */
-  /* end current highlighters */ }
+  /* end current highlighters */
+	background-color: #81856c;
+}
   .nav li {
     /*
     so you really have to rethink your dropdowns for mobile.
@@ -1403,13 +1653,50 @@ and more scalable.
     .nav li ul.sub-menu li a,
     .nav li ul.children li a {
       padding-left: 30px; }
+      
+div.m-menu{
+	  position: -webkit-sticky;
+	  top: 0px;
+	  background-color: #81856c;
+	  
+	
+}
+      
+.nav-trigger {
+  height: 3em;
+  padding: 0;
+  margin:0;
+  width: 100%;
+}
+
+
+nav label[for="nav-trigger"] {
+  width: 100%;
+    position: -webkit-sticky;
+    top: 0 !important;
+    z-index: 999;
+  }
+
+label[for="nav-trigger"] {
+  height: 3em;
+	padding: 0.75em 0.75em 0.75em 0.75rem;
+	display: block;
+    
+  background-color: #81856c;
+  color: #fafafa;
+  font-weight: 700;
+  
+  cursor: pointer;
+}
+
+
 
 /* end .nav */
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 #content {
-  margin-top: 1.5em; }
+   }
 
 .hentry {
   background-color: white;
@@ -1418,7 +1705,8 @@ POSTS & CONTENT STYLES
   border: 1px solid #cccccc; }
   .hentry header {
     border-bottom: 1px solid #f8f9fa;
-    padding: 1.5em; }
+  	padding: 1.5em;
+  }
   .hentry footer {
     padding: 1.5em;
     border-top: 1px solid #f8f9fa; }
@@ -1430,6 +1718,16 @@ POSTS & CONTENT STYLES
 .page-title,
 .entry-title {
   margin: 0; }
+  
+  .page-title{
+  	padding-top: 0.75em;
+  	padding-bottom: 0.5em;
+  }
+  
+  .article-header .page-title{
+  	padding: 0;
+  }
+  
 
 /* want to style individual post classes? Booya! */
 /* post by id (i.e. post-3) */
@@ -1442,19 +1740,20 @@ POSTS & CONTENT STYLES
 /* style by tag (i.e. tag-news) */
 /* post meta */
 .byline {
-  color: #9fa6b4;
+  color: #80856b;
   font-style: italic;
   margin: 0; }
 
 /* entry content */
-.entry-content {
-  padding: 1.5em 1.5em 0;
-  /*
-  image alignment on a screen this size may be
-  a bit difficult. It's set to start aligning
-  and floating images at the next breakpoint,
-  but it's up to you. Feel free to change it up.
-  */ }
+
+   .entry-content {
+      padding: 0 1.5em;
+      /*
+      image alignment on a screen this size may be
+      a bit difficult. It's set to start aligning
+      and floating images at the next breakpoint,
+      but it's up to you. Feel free to change it up.
+      */ }
   .entry-content p {
     margin: 0 0 1.5em; }
   .entry-content table {
@@ -1533,6 +1832,30 @@ POSTS & CONTENT STYLES
 /* gallery caption styles */
 .tags {
   margin: 0; }
+  
+dl.gallery-item{
+	float: left;
+}  
+
+.gallery-columns-2 dl.gallery-item{
+	width: 50%;
+} 
+
+.gallery-columns-3 dl.gallery-item{
+	width: 33%;
+}  
+
+.gallery-columns-4 dl.gallery-item{
+	width: 25%;
+} 
+
+.gallery-columns-5 dl.gallery-item{
+	width: 20%;
+}
+
+.gallery-columns-6 dl.gallery-item{
+	width: 16.5%;
+}  
 
 /******************************************************************
 PAGE NAVI STYLES
@@ -1567,9 +1890,10 @@ PAGE NAVI STYLES
     padding: 0.75em;
     min-width: 1em;
     display: block;
-    color: #2980b9; }
+  	color: #80856b;
+  }
     .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
-      background-color: #2980b9;
+      background-color: #80856b;
       color: white; }
   .pagination .current {
     cursor: default;
@@ -1720,7 +2044,8 @@ COMMENT FORM STYLES
 SIDEBARS & ASIDES
 *********************/
 .widget ul li {
-  /* deep nesting */ }
+  /* deep nesting */ 
+  }
 
 .no-widgets {
   background-color: white;
@@ -1729,14 +2054,30 @@ SIDEBARS & ASIDES
   border: 1px solid #cccccc;
   border-radius: 2px;
   margin-bottom: 1.5em; }
+  
+ #sidebar4.widget{
+ } 
+ 
+ #sidebar1{
+ 	padding-top: 2.2em;
+ }
 
 /*********************
 FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: #323944;
+  background-color: #80856b;
   color: #f8f9fa; }
+  
+#inner-footer{
+	padding-left: 0.5em;
+	padding-right: 0.5rem;
+}  
+
+.footer a{
+	color: #fafafa;
+}
 
 /*
 if you checked out the link above:
@@ -1868,7 +2209,7 @@ you can add resource intensive styles.
     /* highlight current page */
     /* end current highlighters */ }
     .nav ul {
-      background: #323944;
+      background: #80856b;
       margin-top: 0; }
     .nav li {
       float: left;
@@ -1891,9 +2232,11 @@ you can add resource intensive styles.
         margin-top: 0;
         border: 1px solid #ccc;
         border-top: 0;
+        height: 0px;
         position: absolute;
-        visibility: hidden;
         z-index: 8999;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        
         /* highlight sub-menu current page */ }
         .nav li ul.sub-menu li,
         .nav li ul.children li {
@@ -1916,16 +2259,31 @@ you can add resource intensive styles.
           .nav li ul.children li ul {
             top: 0;
             left: 100%; }
-      .nav li:hover > ul {
+      .nav li:hover > ul, .nav li:focus > ul {
         top: auto;
-        visibility: visible; }
+        height: auto;
+        clip: auto !important;
+        clip-path: auto !important;
+        
+         }
 
   /* end .nav */
   /*********************
   SIDEBARS & ASIDES
   *********************/
   .sidebar {
-    margin-top: 2.2em; }
+     }
+#sidebar3.sidebar, #sidebar2.sidebar{
+	margin-top: 10px;
+}
+#sidebar3 .widget, #sidebar2 .widget{
+	margin: 0;
+}
+
+#sidebar2 .widget{
+	padding: 0;
+}
+
 
   .widgettitle {
     border-bottom: 2px solid #444;
@@ -1940,6 +2298,16 @@ you can add resource intensive styles.
       .widget ul li ul {
         margin-top: 0.75em;
         padding-left: 1em; }
+        
+  #sidebar4.widget{
+  	margin: 0 0 2.2em !important;
+  }      
+  
+  nav.fixed{
+  	position: fixed;
+  	top: 0;
+  	width: 596px;
+  }
 
   /* links widget */
   /* meta widget */
@@ -1986,7 +2354,14 @@ you can add resource intensive styles.
   
   ******************************************************************/
   .wrap {
-    width: 1040px; } }
+    width: 1040px; }
+    
+  nav.fixed{
+  	position: fixed;
+  	top: 0;
+  	width: 731px;
+  }  
+     }
 /*********************
 LARGE VIEWING SIZE
 This is for the larger monitors and possibly full screen viewers.

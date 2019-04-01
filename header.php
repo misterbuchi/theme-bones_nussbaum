@@ -4,7 +4,6 @@
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
-
 	<head>
 		<meta charset="utf-8">
 
@@ -40,22 +39,55 @@
 
 	</head>
 
-	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+	<body <?php body_class(); ?> itemtype="http://schema.org/WebPage">
 
 		<div id="container">
+		
+		<div id="wrap" class="wrap cf">
 
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="d-2of7 t-1of5 m-all" itemscope itemtype="http://schema.org/WPHeader">
+		
+		<?php get_sidebar('sidebar3'); ?>
 
-				<div id="inner-header" class="wrap cf">
+				<!-- <div id="inner-header"> -->
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+					
+					<?php if ( function_exists( 'jetpack_the_site_logo' ) ) :?> 
+					<div id="logo" >
+					<?php  jetpack_the_site_logo( 'jetpack_the_site_logo' ); ?>
+					</div>
+					<?php else : ?>
 					<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<?php endif; ?>
+					
 
 					<?php // if you'd like to use the site description you can un-comment it below ?>
-					<?php // bloginfo('description'); ?>
+					
+			<div id="blogdescirption" class="m-h0" >
+			<!--<img src="<?php  echo get_template_directory_uri(); ?>/korbflechten.svg" alt="korbflechten.ch" />-->							
+			
+		
+	
+		<svg width="100%" height="100%" viewBox="0 0 192 643" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><text x="-1243.89" y="2066.73" font-family="Arial" font-size="96.528" transform="rotate(-90 -1296.358 701.232)"><?php bloginfo('description'); ?></text></svg>
+			 </div>
 
+			</header>
+			
+			<div id="content" class="m-all d-5of7 t-4of5">
+	
+							<div id="inner-content" >
+							
+						<?php get_sidebar('sidebar2'); ?>
+						
+						
 
-					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<nav role="navigation" id="site-navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			<input type="checkbox" id="nav-trigger" class="nav-trigger t-h0 d-h0 m-all" role="tooltip" />
+						<div class="m-menu m-all t-h0 d-h0"> <label for="nav-trigger" >Menu</label></div> 
+
+					
+					<div id="toggle" role="tooltip">
 						<?php wp_nav_menu(array(
     					         'container' => false,                           // remove nav container
     					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
@@ -69,9 +101,10 @@
         			               'depth' => 0,                                   // limit the depth of the nav
     					         'fallback_cb' => ''                             // fallback function (if there is one)
 						)); ?>
+						
+						<div>
 
 					</nav>
 
-				</div>
+				
 
-			</header>

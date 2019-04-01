@@ -49,6 +49,18 @@ function bones_ahoy() {
 
   // launching this stuff after theme setup
   bones_theme_support();
+  add_theme_support( 'site-logo' );
+// Create a custom image size for Site Logo.
+add_image_size( 'mytheme-logo', 256, 256 );
+add_image_size( 'slides', 731, 300, true );
+add_image_size( 'igk-thumb', 63, 87 );
+
+ 
+// Declare theme support for Site Logo.
+add_theme_support( 'site-logo', array(
+    'size' => 'mytheme-logo',
+) );
+
 
   // adding sidebars to Wordpress (these are created in functions.php)
   add_action( 'widgets_init', 'bones_register_sidebars' );
@@ -113,6 +125,33 @@ duplicate one of the lines in the array and name it according to your
 new image size.
 */
 
+
+/**
+ * Tests if any of a post's assigned categories are descendants of target 
+categories
+ *
+ * @param int|array $cats The target categories. Integer ID or array of integer 
+IDs
+ * @param int|object $_post The post. Omit to test the current post in the Loop or main query
+ * @return bool True if at least 1 of the post's categories is a descendant of any of the target categories
+ * @see get_term_by() You can get a category by name or slug, then pass ID to this function
+ * @uses get_term_children() Passes $cats
+ * @uses in_category() Passes $_post (can be empty)
+ * @version 2.7
+ * @link http://codex.wordpress.org/Function_Reference/in_category#Testing_if_a_post_is_in_a_descendant_category
+ */
+if ( ! function_exists( 'post_is_in_descendant_category' ) ) {
+ function post_is_in_descendant_category( $cats, $_post = null ) {
+ foreach ( (array) $cats as $cat ) {
+ // get_term_children() accepts integer ID only
+ $descendants = get_term_children( (int) $cat, 'category' );
+ if ( $descendants && in_category( $descendants, $_post ) )
+ return true;
+ }
+ return false;
+ }
+}
+
 /************* THEME CUSTOMIZE *********************/
 
 /* 
@@ -158,7 +197,7 @@ function bones_register_sidebars() {
 		'id' => 'sidebar1',
 		'name' => __( 'Sidebar 1', 'bonestheme' ),
 		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'before_widget' => '<div id="%1$s" class="widget t-1of2 %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
@@ -171,17 +210,41 @@ function bones_register_sidebars() {
 
 	Just change the name to whatever your new
 	sidebar's id is, for example:
-
+*/
 	register_sidebar(array(
 		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
+		'name' => __( 'Top Sidebar', 'bonestheme' ),
 		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
+		'class'         => 'topsidebar',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
 	));
-
+	
+	register_sidebar(array(
+		'id' => 'sidebar3',
+		'name' => __( 'languagechanger Sidebar', 'bonestheme' ),
+		'description' => __( 'The second (tertiary) sidebar.', 'bonestheme' ),
+		'class'         => 'changesidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
+	));
+	
+	register_sidebar(array(
+		'id' => 'sidebar4',
+		'name' => __( 'Footer Sidebar', 'bonestheme' ),
+		'description' => __( 'The footer sidebar.', 'bonestheme' ),
+		'class'         => 'footer-sidebar',
+		'before_widget' => '<div id="%1$s" class="widget t-1of2 d-1of2 %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle ">',
+		'after_title' => '</h4>',
+	));
+	
+/*
 	To call the sidebar in your template, you can just copy
 	the sidebar.php file and rename it to your sidebar's name.
 	So using the above example, it would be:
@@ -210,7 +273,7 @@ function bones_comments( $comment, $args, $depth ) {
           // create variable
           $bgauthemail = get_comment_author_email();
         ?>
-        <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
+        <img data-gravatar="https://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
         <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ) ?>
         <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
@@ -231,6 +294,26 @@ function bones_comments( $comment, $args, $depth ) {
 } // don't remove this bracket!
 
 
+add_filter('upload_mimes', 'custom_upload_mimes');
+ 
+function custom_upload_mimes ( $existing_mimes=array() ) {
+ 
+    // add the file extension to the array
+ 
+    $existing_mimes['svg'] = 'mime/type';
+ 
+        // call the modified list of extensions
+ 
+    return $existing_mimes;
+ 
+}
+
+/*Modification of the Archivetitle
+*/
+
+
+
+
 /*
 This is a modification of a function found in the
 twentythirteen theme where we can declare some
@@ -239,9 +322,13 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+  wp_enqueue_style('googleFonts', 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
 }
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
+
+
+
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

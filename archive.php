@@ -1,17 +1,27 @@
 <?php get_header(); ?>
 
-			<div id="content">
+			
 
-				<div id="inner-content" class="wrap cf">
-
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						
+						
+						
+						
+						<h1 class="page-title entry-title"><?php single_cat_title( '', true ); ?></h1>
+						
 
 							<?php
-							the_archive_title( '<h1 class="page-title">', '</h1>' );
+							/*the_archive_title( '<h1 class="page-title">', '</h1>' );*/
 							the_archive_description( '<div class="taxonomy-description">', '</div>' );
 							?>
 							
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+							<?php if (have_posts()) : ?>
+							<?php $count = 0; ?>
+							
+							<?php while (have_posts()) : the_post(); ?>
+							<?php $count++; ?>
+							
+							<?php if ($count <= 1) : ?>
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
 
@@ -19,21 +29,21 @@
 
 									<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 									<p class="byline entry-meta vcard">
-										<?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+										<?php printf( ' %1$s',
                   							     /* the time the post was published */
-                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
+                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . the_date(get_option('date_format')) . '</time>'
                        								/* the author of the post */
-                       								'<span class="by">'.__('by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                       								
                     							); ?>
 									</p>
 
 								</header>
+								
 
 								<section class="entry-content cf">
 
-									<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
 
-									<?php the_excerpt(); ?>
+									<?php the_content(); ?>
 
 								</section>
 
@@ -42,6 +52,27 @@
 								</footer>
 
 							</article>
+							
+							<?php else : ?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+							
+							<header class="entry-header article-header">
+							
+																<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+																<p class="byline entry-meta vcard">
+																	<?php printf( ' %1$s',
+																			     /* the time the post was published */
+																			     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . the_date(get_option('date_format')) . '</time>'
+																					/* the author of the post */
+																					
+																			); ?>
+																</p>
+							
+															</header>
+															</article>
+							<?php endif; ?>
+												
+							
 
 							<?php endwhile; ?>
 
@@ -65,7 +96,6 @@
 
 						</main>
 
-					<?php get_sidebar(); ?>
 
 				</div>
 
