@@ -28,16 +28,16 @@
 						
 						<script>
 									jQuery(function(){
-    $('ul.slideshow li').hide();
-    $('ul.slideshow li').eq(0).fadeIn(4000).addClass('active');
-	$('ul.slideshow').click(function(){
-		if($('ul.slideshow li.active').next().length == 0){
+    jQuery('ul.slideshow li').hide();
+    jQuery('ul.slideshow li').eq(0).fadeIn(4000).addClass('active');
+	jQuery('ul.slideshow').click(function(){
+		if(jQuery('ul.slideshow li.active').next().length == 0){
 			
-					$('ul.slideshow li.active').removeClass('active').fadeOut(4000).parent().find('li').eq(0).fadeIn(4000).addClass('active');
+					jQuery('ul.slideshow li.active').removeClass('active').fadeOut(4000).parent().find('li').eq(0).fadeIn(4000).addClass('active');
 
 			}else{
 		
-		$('ul.slideshow li.active').removeClass('active').fadeOut(4000).next().fadeIn(4000).addClass('active');
+		jQuery('ul.slideshow li.active').removeClass('active').fadeOut(4000).next().fadeIn(4000).addClass('active');
 	return false;
 			}
 
@@ -45,7 +45,7 @@
 	
 	
 	
-	var myTimer = setInterval(function startAni(){$('ul.slideshow').trigger('click');		
+	var myTimer = setInterval(function startAni(){jQuery('ul.slideshow').trigger('click');		
 					    },6000);
 									});
 									
