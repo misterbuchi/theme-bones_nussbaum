@@ -192,33 +192,6 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
-
-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-svg {
-  width: 100vw;
-  height: (height/width * 100)vw;
-  max-height: 100vh;
-  max-width: (width/height * 100)vh;
-}
-
-
-
-#blogdescirption svg{
-display: none;
-height: 970px !important;
-
-}
-p{
-  -ms-hyphens: manual;
-  hyphens: manual;
-  }
-
-
 /*********************
 NAVIGATION STYLES
 *********************/
@@ -361,3 +334,11 @@ header.php file to see what they are:
 .lt-ie8 .class { ... }
 
 */
+
+
+.lte-ie9 .header {
+  background:  url(../images/background.JPG);
+   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#70002142,endColorstr=#70002142); 
+    color: white;
+zoom: 1;;
+}

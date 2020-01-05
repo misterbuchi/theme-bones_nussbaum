@@ -44,7 +44,9 @@
                 </section> <?php // end article section ?>
 
                 <footer class="article-footer">
-                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+                  <?php
+                    $url = htmlspecialchars($_SERVER['HTTP_REFERER']);?>
+                  <a class="button back-button" href="<?php echo $url ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i></a><?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 
                 </footer> <?php // end article footer ?>
 

@@ -13,8 +13,6 @@
                  * folder and replace the function below with the contents of the "format.php" file.
                 */
               ?>
-              
-              
 
               <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 
@@ -23,29 +21,15 @@
                   <h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
 
                   <p class="byline entry-meta vcard">
-                  <?php 
-if ( in_category( 'Agenda' ) || post_is_in_descendant_category( '12' )) {
-	echo do_shortcode("[event_details]");
-	
-} elseif ( in_category( 'Betriebe' ) || post_is_in_descendant_category( '6' )) {
-	
-	
-	}  
 
-else {
-	
-	printf( __( 'Posted', 'bonestheme' ).' %1$s',
-                  							     /* the time the post was published */
-                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>'
-                       								/* the author of the post */
-                       								
-                    							);
-	// etc.
-}
-?>
+                    <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+                       /* the time the post was published */
+                       '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
+                       /* the author of the post */
+                       '<span class="by">'.__( 'by', 'bonestheme' ).'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                    ); ?>
 
-										
-									</p>
+                  </p>
 
                 </header> <?php // end article header ?>
 
@@ -76,12 +60,13 @@ else {
                 </section> <?php // end article section ?>
 
                 <footer class="article-footer">
-                <p><a href="javascript:history.back()">zur&uuml;ck</a>
-                </p>
 
-                  <!--<?php printf( __( 'filed under', 'bonestheme' ).': %1$s', get_the_category_list(', ') ); ?>
+                  <?php
+                    $url = htmlspecialchars($_SERVER['HTTP_REFERER']);?>
+                  <a class="button back-button" href="<?php echo $url ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i></a><?php printf( __( 'filed under', 'bonestheme' ).': %1$s', get_the_category_list(', ') ); ?>
 
-                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>-->
+                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+                  
 
                 </footer> <?php // end article footer ?>
 

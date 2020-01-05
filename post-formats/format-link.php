@@ -45,7 +45,9 @@
 
                 <footer class="article-footer">
 
-                  <?php printf( __( 'Filed under: %1$s', 'bonestheme' ), get_the_category_list(', ') ); ?>
+                  <?php
+                    $url = htmlspecialchars($_SERVER['HTTP_REFERER']);?>
+                  <a class="button back-button" href="<?php echo $url ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i></a><?php printf( __( 'Filed under: %1$s', 'bonestheme' ), get_the_category_list(', ') ); ?>
 
                   <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 

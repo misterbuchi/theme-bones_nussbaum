@@ -1,6 +1,6 @@
 <?php
 /*
- Template Name: Ohne Sidebar
+ Template Name: Keine Seiteleiste
  *
  * This is your custom page template. You can create as many of these as you need.
  * Simply name is "page-whatever.php" and in add the "Template Name" title at the
@@ -15,8 +15,11 @@
 
 <?php get_header(); ?>
 
+			<div id="content">
 
-<main id="main" class="m-all t-all d-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">		
+				<div id="inner-content" class="wrap cf">
+
+						<main id="main" class="m-all t-all d-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -26,14 +29,14 @@
 
 									<h1 class="page-title"><?php the_title(); ?></h1>
 
+									
 
 
 								</header>
 
 								<section class="entry-content cf" itemprop="articleBody">
-									<?php
-										// the content (pretty self explanatory huh)
-										the_content();
+								<?php 
+																		the_content();
 
 										/*
 										 * Link Pages is used in case you have posts that are set to break into
@@ -58,6 +61,8 @@
 
 
 								<footer class="article-footer">
+
+                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 
 								</footer>
 

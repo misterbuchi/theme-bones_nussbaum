@@ -1,8 +1,10 @@
 <?php get_header(); ?>
 
-		
+			<div id="content">
 
-						<main id="main" class="m-all t-all d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">		
+				<div id="inner-content" class="wrap cf">
+
+						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -11,6 +13,8 @@
 								<header class="article-header">
 
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+
+									
 
 								</header> <?php // end article header ?>
 

@@ -1,6 +1,8 @@
+
 <?php
 /*
- Template Name: Betriebe
+ Template Name: Netzwerk
+ *
  * This is your custom page template. You can create as many of these as you need.
  * Simply name is "page-whatever.php" and in add the "Template Name" title at the
  * top, the same way it is here.
@@ -11,12 +13,13 @@
  * For more info: http://codex.wordpress.org/Page_Templates
 */
 ?>
-
 <?php get_header(); ?>
 
-<main id="main" class="m-all t-all d-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">		
+			<div id="content">
 
+				<div id="inner-content" class="wrap cf">
 
+						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -24,11 +27,11 @@
 
 								<header class="article-header">
 
-									<h1 class="page-title"><?php the_title(); ?></h1>
+									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
+									
 
-
-								</header>
+								</header> <?php // end article header ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
 									<?php
@@ -54,56 +57,27 @@
 											'link_after'  => '</span>',
 										) );
 									?>
-<div id="job-listings">
-<?php $cat = 'Betriebe';
-$catID = get_cat_ID($cat);
-$subcats = get_categories('child_of=' . $catID);
-    foreach($subcats as $subcat) {
-    echo '<h2>' . $subcat->cat_name . '</h2>';
-    echo '<ul>';
-    $subcat_posts = get_posts( array('category' => $subcat->cat_ID, 'orderby' => 'title', 'order' => 'ASC', 'numberposts' => -1) );
-    foreach($subcat_posts as $subcat_post) {
-        $postID = $subcat_post->ID;
-	echo '<li>';
-	echo '<a href="' . get_permalink($postID) . '">';
-	echo get_the_title($postID);
-	echo '</a></li>';
-	}
-	echo '</ul>';
-	} ?>
- </div>
- 								</section>
- 
+									
+															<?php dynamic_sidebar('Netzwerk'); ?>
+									
+								</section> <?php // end article section ?>
 
-								<footer class="article-footer">
+								<footer class="article-footer cf">
 
 								</footer>
 
+								<?php comments_template(); ?>
 
 							</article>
 
-							<?php endwhile; else : ?>
-
-									<article id="post-not-found" class="hentry cf">
-											<header class="article-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-										</header>
-											<section class="entry-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
-
-							<?php endif; ?>
+							<?php endwhile; endif; ?>
 
 						</main>
 
+						<?php get_sidebar('sidebar1'); ?>
 
 				</div>
 
 			</div>
-
 
 <?php get_footer(); ?>

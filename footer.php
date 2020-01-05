@@ -17,11 +17,8 @@
     					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
 						)); ?>
 					</nav>
-					
-					<?php get_sidebar('sidebar4'); ?>
 
-
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+<p class="source-org copyright"><a href="#container" title="Nach oben scrollen"><i class="fa fa-arrow-up" aria-hidden="true"></i></a> <?php bloginfo( 'name' ); ?> <a href="tel:+41629231452" title:"062-923 14 52 anrufen">062-923 14 52</a> - <a href="javascript:DeCryptX('1c2w2e0h2g1m2k0@2m2q1s2d1v3q1e0s1u3x0h3o0.1d3k')" title="Mail senden!"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> - &copy; <?php echo date('Y'); ?>.</p>
 
 				</div>
 
