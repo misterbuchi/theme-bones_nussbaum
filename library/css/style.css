@@ -1,10 +1,9 @@
-/* @override 
-	https://korbundstuhl.ch/wp/wp-content/plugins/contact-form-7/includes/css/styles.css */
+
 
 /*! Made with Bones: http://themble.com/bones :) */
 /******************************************************************
-Site Name:
-Author:
+Site Name: Atelier Nussbaum	
+Author: Dominik Bucheli
 
 Stylesheet: Main Stylesheet
 
@@ -99,8 +98,8 @@ border: 1px solid #cccccc;
 	margin-bottom: 3%;
 	background: 
 	  linear-gradient(
-	 rgba(0, 33, 66, 0.7),
-	 rgba(0, 33, 66, 0.7)),
+	 rgba(40, 127, 185, 0.7),
+	 rgba(40, 127, 185, 0.7)),
 	url(../images/background.JPG);
 	 color: white; }
 	 
@@ -114,8 +113,8 @@ border: 1px solid #cccccc;
 	margin-bottom: 3%;
 	background: 
 	  linear-gradient(
-	 rgba(0, 33, 66, 0.7),
-	 rgba(0, 33, 66, 0.7)),
+	 rgba(40, 127, 185, 0.7),
+	 rgba(40, 127, 185, 0.7)),
 	url(../images/background.JPG);
 	 color: white; }
 	
@@ -1325,7 +1324,7 @@ textarea,
   padding: 0 12px;
   margin-bottom: 14px;
   font-size: 1em;
-  color: #003366;
+  color: ;
   border-radius: 3px;
   vertical-align: middle;
   box-shadow: none;
@@ -1592,7 +1591,7 @@ body {
   font-family: "Century Gothic", CenturyGothic, tex_gyre_adventorregular, AppleGothic, Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
-  color: #003366;
+  color: ;
   -webkit-font-smoothing: antialiased; }
 
 /********************
@@ -1645,12 +1644,12 @@ LAYOUT & GRID STYLES
 LINK STYLES
 *********************/
 a, a:visited {
-  color: #003366;
+  color: ;
   /* on hover */
   /* on click */
   /* mobile tap color */ }
   a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #d10e3c; }
+    color: #b4606f; }
   a:link, a:visited:link {
     /*
     this highlights links on iPhones/iPads.
@@ -1720,8 +1719,8 @@ HEADER STYLES
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80002142,endColorstr=#80002142); 
     background: 
    linear-gradient(
-  rgba(0, 33, 66, 0.7),
-  rgba(0, 33, 66, 0.7)),
+  rgba(40, 127, 185, 0.7),
+  rgba(40, 127, 185, 0.7)),
  url(../images/background.JPG);
   color: white; }
 
@@ -1895,8 +1894,8 @@ POSTS & CONTENT STYLES
     max-width: 100%;
     height: auto; }
   .entry-content pre {
-    background: #003366;
-    color: #f8f9fa;
+    background: #287fb9;
+    color: #fefffe;
     font-size: 0.9em;
     padding: 1.5em;
     margin: 0 0 1.5em;
@@ -1970,10 +1969,10 @@ clear: both;}
       color: white; }
   .pagination .current {
     cursor: default;
-    color: #003366; }
+    color: ; }
     .pagination .current:hover, .pagination .current:focus {
       background-color: white;
-      color: #003366; }
+      color: ; }
 
 /* end .bones_page_navi */
 /* fallback previous & next links */
@@ -2084,7 +2083,7 @@ COMMENT FORM STYLES
   font-style: italic;
   margin: 0; }
   .logged-in-as a {
-    color: #003366; }
+    color: ; }
 
 .comment-form-comment {
   margin: 1.5em 0 0.75em; }
@@ -2132,7 +2131,7 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: rgba(0, 33, 66, 0.7);
+  background-color: rgba(40, 127, 185, 0.7);
   color: #f8f9fa; }
   
   
@@ -2141,7 +2140,7 @@ FOOTER STYLES
  } 
  
  .footer a:hover {
-color: #d10e3c; } 
+color: #b4606f; } 
 
 #inner-footer {
 	padding-left: 0.7em;
@@ -2280,7 +2279,7 @@ you can add resource intensive styles.
     /* highlight current page */
     /* end current highlighters */ }
     .nav ul {
-  background-color: rgba(0, 33, 66, 0.7);
+  background-color: rgba(40, 127, 185, 0.7);
       margin-top: 0; }
     .nav li {
       float: left;
